@@ -1,0 +1,32 @@
+name: Kotegawa Trading Monitor
+description: Free trading strategy monitor - deploy to cloud with Railway
+runtime: python
+
+build:
+  builder: nixpacks
+
+variables:
+  PORT: 8000
+  PYTHONUNBUFFERED: "true"
+
+deploy:
+  startCommand: python kotegawa_backend_free.py
+
+[tool.poetry]
+name = "kotegawa-monitor"
+version = "2.0"
+description = "Free trading strategy monitor for Indian stocks"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0"}
+pydantic = "^2.3.0"
+pandas = "^2.0.3"
+numpy = "^1.24.3"
+yfinance = "^0.2.32"
+python-multipart = "^0.0.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
